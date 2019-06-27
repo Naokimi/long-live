@@ -17,7 +17,9 @@ ActiveRecord::Schema.define(version: 2019_06_26_055329) do
 
   create_table "skills", force: :cascade do |t|
     t.string "name"
-    t.integer "level", default: 0
+    t.string "category"
+    t.string "sub_category"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
