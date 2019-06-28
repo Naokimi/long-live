@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_26_055329) do
+ActiveRecord::Schema.define(version: 2019_06_28_012758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "char_skills", force: :cascade do |t|
+    t.integer "level", default: 0
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_char_skills_on_skill_id"
+  end
 
   create_table "skills", force: :cascade do |t|
     t.string "name"
@@ -24,4 +32,5 @@ ActiveRecord::Schema.define(version: 2019_06_26_055329) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "char_skills", "skills"
 end
