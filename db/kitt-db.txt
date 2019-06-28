@@ -121,7 +121,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="480" y="493" name="char_skills">
+<table x="481" y="493" name="char_skills">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -135,18 +135,6 @@
 <row name="level" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="267" y="330" name="skill_trees">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="skills_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="char_skills" row="id" />
-</row>
 <row name="character_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="character" row="id" />

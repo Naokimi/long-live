@@ -1,4 +1,4 @@
 class CharSkill < ApplicationRecord
   belongs_to :skill
-  belongs_to :skill_tree
+  belongs_to :character
 end

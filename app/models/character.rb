@@ -1,6 +1,6 @@
 class Character < ApplicationRecord
-  has_one :skill_tree, dependent: :destroy
-  has_many :char_skills, through: :skill_tree
+  has_many :char_skills, dependent: :destroy
+  has_many :skills, through: :char_skills
 
   validates :name, presence: true
   validates :gender, presence: true, inclusion: { in: %w(male female other) }

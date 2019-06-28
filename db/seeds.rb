@@ -63,20 +63,14 @@ puts "creating character"
 
 char = Character.create!
 
-puts "creating skill tree"
-
-st = SkillTree.new
-st.character = char
-st.save!
-
-puts "filling skill tree with skills"
+puts "filling assigning char_skills to character"
 
 counter = 0
 until counter == Skill.count
   counter += 1
   cs = CharSkill.new
   cs.skill_id = counter
-  cs.skill_tree = st
+  cs.character = char
   cs.save!
 end
 

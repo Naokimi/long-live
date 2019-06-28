@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 2019_06_28_023758) do
   create_table "char_skills", force: :cascade do |t|
     t.integer "level", default: 0
     t.bigint "skill_id"
-    t.bigint "skill_tree_id"
+    t.bigint "character_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_char_skills_on_character_id"
     t.index ["skill_id"], name: "index_char_skills_on_skill_id"
-    t.index ["skill_tree_id"], name: "index_char_skills_on_skill_tree_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -30,13 +30,6 @@ ActiveRecord::Schema.define(version: 2019_06_28_023758) do
     t.string "gender", default: "female"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "skill_trees", force: :cascade do |t|
-    t.bigint "character_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["character_id"], name: "index_skill_trees_on_character_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -48,7 +41,6 @@ ActiveRecord::Schema.define(version: 2019_06_28_023758) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "char_skills", "skill_trees"
+  add_foreign_key "char_skills", "characters"
   add_foreign_key "char_skills", "skills"
-  add_foreign_key "skill_trees", "characters"
 end
