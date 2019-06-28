@@ -8,6 +8,7 @@
 
 puts "emptying database"
 
+Character.destroy_all
 
 if Skill.first.nil?
 
@@ -57,3 +58,26 @@ if Skill.first.nil?
   Skill.create!(name: "Wield Magic", category: "Mystic", sub_category: "Lumen", description: "Manipulation and deliberate use of magic.")
 
 end
+
+puts "creating character"
+
+char = Character.create!
+
+puts "creating skill tree"
+
+st = SkillTree.new
+st.character = char
+st.save!
+
+puts "filling skill tree with skills"
+
+counter = 0
+until counter == Skill.count
+  counter += 1
+  cs = CharSkill.new
+  cs.skill_id = counter
+  cs.skill_tree = st
+  cs.save!
+end
+
+puts "finished"
